@@ -18,6 +18,12 @@ return [
         'passwords' => env('AUTH_PASSWORD_BROKER', 'users'),
     ],
 
+    'guard_names' => [
+        'default' => [
+            'user' => 'web',
+        ],
+    ],
+
     /*
     |--------------------------------------------------------------------------
     | Authentication Guards

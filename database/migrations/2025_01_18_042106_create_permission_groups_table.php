@@ -12,6 +12,7 @@ return new class extends Migration {
     {
         Schema::create('permission_groups', function (Blueprint $table) {
             $table->id();
+            $table->integer('rank')->nullable();
             $table->string('name');
             $table->string('guard_name');
             $table->timestamps();
