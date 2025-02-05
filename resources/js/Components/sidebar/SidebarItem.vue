@@ -12,19 +12,11 @@ const props = defineProps({
 
 const sidebarStore = useSidebarStore();
 
-const isActive = computed(() => {
-    const currentUrl = window.location.pathname;
-    return currentUrl === props.item.url || 
-           currentUrl.startsWith(`${props.item.url}/`) ||
-           sidebarStore.page === props.item.label;
-});
-
 const handleItemClick = (url) => {
     sidebarStore.page = props.item.label;
     
     router.visit(url, {
         preserveScroll: true,
-        showProgress: false,
     });
 };
 </script>
@@ -33,7 +25,8 @@ const handleItemClick = (url) => {
     <li
         @click="handleItemClick(item.url)"
         class="cursor-pointer hover:bg-black hover:text-white px-3 text-black py-2 rounded-lg"
-        :class="{ 'bg-black text-white': isActive }"
+        :class="{ 'bg-black text-white hover:!bg-black': $page.url === item.url ||
+                    $page.url.startsWith(`${item.url}`) || sidebarStore.page === item.label }"
         sidebar-toggle-collapse
     >
     <span sidebar-toggle-item>

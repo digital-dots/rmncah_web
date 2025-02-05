@@ -1,17 +1,16 @@
+import 'vue-multiselect/dist/vue-multiselect.min.css';
 import '../css/app.css';
 import './bootstrap';
+
+import Multiselect from 'vue-multiselect';
 
 import { createInertiaApp } from '@inertiajs/vue3';
 import { resolvePageComponent } from 'laravel-vite-plugin/inertia-helpers';
 import { createApp, h } from 'vue';
 import { createPinia } from "pinia";
-import piniaPluginPersistedstate from 'pinia-plugin-persistedstate';
 import { ZiggyVue } from '../../vendor/tightenco/ziggy';
 
 const appName = import.meta.env.VITE_APP_NAME || 'Laravel';
-const pinia = createPinia();
-pinia.use(piniaPluginPersistedstate);
-
 
 createInertiaApp({
     title: (title) => `${title} - ${appName}`,
@@ -23,11 +22,12 @@ createInertiaApp({
     setup({ el, App, props, plugin }) {
         return createApp({ render: () => h(App, props) })
             .use(plugin)
-            .use(pinia)
+            .use(createPinia())
             .use(ZiggyVue)
+            .component("Multiselect", Multiselect)
             .mount(el);
     },
     progress: {
-        color: '#4B5563',
+        color: '#000000',
     },
 });

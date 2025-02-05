@@ -1,5 +1,6 @@
 <script setup>
 import AuthenticatedLayout from "@/Layouts/AuthenticatedLayout.vue";
+import { Link } from "@inertiajs/vue3";
 
 defineOptions({ layout: AuthenticatedLayout });
 
@@ -9,12 +10,14 @@ const props = defineProps(["data", "search"]);
 <template>
     <div class="mx-6">
         <div class="flex justify-end mb-5">
-            <div
-                class="bg-black text-white px-5 py-1.5 rounded-md cursor-pointer flex items-center gap-2"
-            >
-                <span class="text-xl">+</span>
-                <span>Add Role</span>
-            </div>
+            <Link href="/roles/create">
+                <div
+                    class="bg-black text-white px-5 py-1.5 rounded-md cursor-pointer flex items-center gap-2"
+                >
+                    <span class="text-xl">+</span>
+                    <span>Add Role</span>
+                </div>
+            </Link>
         </div>
 
         <div
@@ -24,14 +27,8 @@ const props = defineProps(["data", "search"]);
                 <table class="min-w-full divide-y divide-gray-200">
                     <thead class="bg-gray-50">
                         <tr>
-                            <th
-                                class="px-6 py-4 text-left uppercase"
-                            >
-                                Name
-                            </th>
-                            <th
-                                class="px-6 py-4 uppercase text-end"
-                            >
+                            <th class="px-6 py-4 text-left uppercase">Name</th>
+                            <th class="px-6 py-4 uppercase text-end">
                                 Actions
                             </th>
                         </tr>
