@@ -13,7 +13,6 @@ class RoleController extends Controller
     {
         $roles = Role::query()
             ->with(['permissions'])
-            ->where('guard_name', 'agent')
             ->when($request->search, fn($query) => $query->where('name', 'like', "%{$request->search}%"))
             ->orderBy('id', 'desc')
             ->paginate($request->limit ?? 10)

@@ -2,10 +2,21 @@
 import AuthenticatedLayout from "@/Layouts/AuthenticatedLayout.vue";
 
 defineOptions({ layout: AuthenticatedLayout });
+
+const props = defineProps(["data", "search"]);
 </script>
 
 <template>
     <div class="mx-6">
+        <div class="flex justify-end mb-5">
+            <div
+                class="bg-black text-white px-5 py-1.5 rounded-md cursor-pointer flex items-center gap-2"
+            >
+                <span class="text-xl">+</span>
+                <span>Add Role</span>
+            </div>
+        </div>
+
         <div
             class="bg-white border rounded-md overflow-hidden shadow-sm sm:rounded-lg"
         >
@@ -14,33 +25,25 @@ defineOptions({ layout: AuthenticatedLayout });
                     <thead class="bg-gray-50">
                         <tr>
                             <th
-                                class="px-6 py-4 text-left font-semibold uppercase tracking-wider"
+                                class="px-6 py-4 text-left uppercase"
                             >
                                 Name
                             </th>
                             <th
-                                class="px-6 py-4 font-semibold uppercase tracking-wider text-center"
-                            >
-                                Description
-                            </th>
-                            <th
-                                class="px-6 py-4 font-semibold uppercase tracking-wider text-end"
+                                class="px-6 py-4 uppercase text-end"
                             >
                                 Actions
                             </th>
                         </tr>
                     </thead>
                     <tbody class="bg-white divide-y divide-gray-200">
-                        <tr>
+                        <tr v-for="d in data.data" :key="d.id">
                             <td class="px-6 py-5 whitespace-nowrap text-sm">
-                                Admin
-                            </td>
-                            <td class="px-6 py-5 whitespace-nowrap text-sm w-full text-center">
-                                Administrator role
+                                {{ d.name }}
                             </td>
                             <td class="px-6 py-5 whitespace-nowrap text-end">
                                 <div class="flex gap-2 justify-end">
-                                    <a
+                                    <!-- <a
                                         href="#"
                                         class="text-indigo-600 hover:text-indigo-900 underline"
                                     >
@@ -51,7 +54,7 @@ defineOptions({ layout: AuthenticatedLayout });
                                         class="text-red-600 hover:text-red-900 underline"
                                     >
                                         Delete
-                                    </a>
+                                    </a> -->
                                 </div>
                             </td>
                         </tr>
