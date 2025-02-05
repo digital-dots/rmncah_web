@@ -20,3 +20,25 @@ body {
         scrollbar-width: none; /* Firefox */
     }
 }
+
+.multiselect__tag {
+    background-color: black !important;
+    color: white !important;
+    font-weight: 500 !important;
+}
+
+.multiselect__tag-icon::after {
+    color: white !important;
+}
+
+.multiselect__option--highlight::after {
+    background-color: black !important;
+}
+
+.multiselect__option--highlight {
+    background-color: black !important;
+}
+
+.multiselect__option {
+    font-weight: 500 !important;
+}
