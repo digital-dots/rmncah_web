@@ -18,9 +18,9 @@ const userMenus = ref([
 
 <template>
     <div>
-        <div class="min-h-screen flex gap-4 overflow-hidden">
+        <div class="min-h-screen flex overflow-hidden">
             <div
-                class="min-w-[240px] bg-[#fbfbfb] h-screen border border-r-[1.5px] border-[#e5e7eb] overflow-y-auto hidden-scrollbar"
+                class="min-w-[240px] h-screen border border-r-[1.5px] border-[#e5e7eb] overflow-y-auto hidden-scrollbar"
             >
                 <div class="flex gap-2 items-center p-4">
                     <div>
@@ -29,15 +29,35 @@ const userMenus = ref([
                     </div>
                 </div>
 
-                <ul class="flex flex-col gap-2.5 pt-4 pb-8 px-2">
-                    <template v-for="menu in userMenus">
-                        <SidebarItem :item="menu" />
-                    </template>
-                </ul>
+                <div
+                    class="flex flex-col justify-between h-[calc(100%-5.5rem)]"
+                >
+                    <ul class="flex flex-col gap-2.5 pt-4 pb-8 px-2">
+                        <template v-for="menu in userMenus">
+                            <SidebarItem :item="menu" />
+                        </template>
+                    </ul>
+                    <div class="border-t border-[#e5e7eb]">
+                        <ul class="flex flex-col gap-2.5 pt-4 pb-8 px-2">
+                            <li
+                                class="cursor-pointer hover:bg-black hover:text-white px-4 text-black py-2 rounded-lg"
+                            >
+                                <span>Setting</span>
+                            </li>
+                            <li
+                                class="cursor-pointer hover:bg-black hover:text-white px-4 text-black py-2 rounded-lg"
+                            >
+                                <span>Log Out</span>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
             </div>
 
             <!-- main content -->
-            <main class="py-8 flex-1">
+            <!-- bg-[#f8fbf8] -->
+            <!-- fdfcfa -->
+            <main class="py-8 max-w-full flex-1 bg-[#f8f8f8]">
                 <slot />
             </main>
         </div>
