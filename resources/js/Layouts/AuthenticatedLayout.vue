@@ -1,6 +1,7 @@
 <script setup>
 import SidebarItem from "@/Components/sidebar/SidebarItem.vue";
 import { ref } from "vue";
+import { Link } from '@inertiajs/vue3';
 
 const userMenus = ref([
     {
@@ -44,11 +45,13 @@ const userMenus = ref([
                             >
                                 <span>Setting</span>
                             </li>
-                            <li
-                                class="cursor-pointer hover:bg-black hover:text-white px-4 text-black py-2 rounded-lg"
-                            >
-                                <span>Log Out</span>
-                            </li>
+                            <Link :href="route('logout')" method="post" as="button">
+                                <li
+                                    class="cursor-pointer hover:bg-black hover:text-white px-4 text-black py-2 rounded-lg text-left"
+                                >
+                                    <span>Logout</span>
+                                </li>
+                            </Link>
                         </ul>
                     </div>
                 </div>
