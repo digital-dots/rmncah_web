@@ -1,4 +1,5 @@
 <script setup>
+import Pagination from "@/Components/global/Pagination.vue";
 import AuthenticatedLayout from "@/Layouts/AuthenticatedLayout.vue";
 import { Link } from "@inertiajs/vue3";
 
@@ -59,5 +60,7 @@ const props = defineProps(["data", "search"]);
                 </table>
             </div>
         </div>
+        
+        <Pagination :links="data.links" />
     </div>
 </template>

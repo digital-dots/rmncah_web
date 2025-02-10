@@ -1,6 +1,7 @@
 <script setup>
 import { useForm } from "@inertiajs/vue3";
 import { ref } from "vue";
+import Input from "@/Components/global/Input.vue";
 
 const props = defineProps({
     isCreate: {
@@ -65,10 +66,34 @@ const selectAllHandler = () => {
         form.permissions = [];
     }
 };
+
+const submit = () => {
+    const options = {
+        onSuccess: () => {
+            form.reset();
+        },
+        onError: (errors) => {
+            form.errors = errors;
+        },
+    };
+
+    if(props.isCreate) {
+        form.post(route('roles.store'), options);
+    } else {
+        form.put(route('roles.update', props.editValue.id), options);
+    }
+};
 </script>
 
 <template>
-    <form @submit.prevent="submitHandler" method="post" class="">
+    <form @submit.prevent="submit" class="space-y-6">
+        <Input
+            v-model="form.name"
+            label="Role Name"
+            placeholder="Enter role name"
+            :error="form.errors.name"
+        />
+
         <div class="mt-5">
             <div class="mb-3">
                 <label>Permission Groups</label>
@@ -146,7 +171,14 @@ const selectAllHandler = () => {
             </div>
         </div>
 
-        <div class="mt-5">
+        <div class="flex justify-end">
+            <button
+                type="submit"
+                :disabled="form.processing"
+                class="px-4 py-2 text-white bg-black rounded-lg hover:bg-gray-800 disabled:opacity-50 transition-colors"
+            >
+                Save Role
+            </button>
         </div>
     </form>
 </template>

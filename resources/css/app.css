@@ -31,14 +31,14 @@ body {
     color: white !important;
 }
 
-.multiselect__option--highlight::after {
+/* .multiselect__option--highlight::after {
     background-color: black !important;
-}
+} */
 
-.multiselect__option--highlight {
+/* .multiselect__option--highlight {
     background-color: black !important;
 }
 
 .multiselect__option {
     font-weight: 500 !important;
-}
+} */

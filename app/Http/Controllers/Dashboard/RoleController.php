@@ -31,4 +31,13 @@ class RoleController extends Controller
 
         return Inertia::render('Role/Create', ['permission_groups' => $permission_groups]);
     }
+
+    public function store(Request $request)
+    {
+        $role = Role::firstOrCreate(['name' => $request->name, 'guard_name' => 'web']);
+
+        $role->syncPermissions($request->permissions);
+
+        return to_route('roles.index')->with('success', 'Role is created successfully');
+    }
 }
