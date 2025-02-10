@@ -2,6 +2,7 @@
 import { useForm } from "@inertiajs/vue3";
 import { onMounted, ref } from "vue";
 import Input from "@/Components/global/Input.vue";
+import Button from "@/Components/global/Button.vue";
 
 const props = defineProps({
     isCreate: {
@@ -187,13 +188,12 @@ onMounted(() => {
         </div>
 
         <div class="flex justify-end">
-            <button
-                type="submit"
+            <Button 
+                type="submit" 
                 :disabled="form.processing"
-                class="px-4 py-2 text-white bg-black rounded-lg hover:bg-gray-800 disabled:opacity-50 transition-colors"
             >
                 Save Role
-            </button>
+            </Button>
         </div>
     </form>
 </template>

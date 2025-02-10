@@ -6,6 +6,7 @@ import AuthenticatedLayout from "@/Layouts/AuthenticatedLayout.vue";
 import { Link, router } from "@inertiajs/vue3";
 import { debounce } from "lodash";
 import { ref, watch } from "vue";
+import Button from "@/Components/global/Button.vue";
 
 defineOptions({ layout: AuthenticatedLayout });
 
@@ -42,17 +43,12 @@ watch(
             <Input
                 v-model="search"
                 type="text"
-                class="w-2/5 px-3"
+                class="w-2/6 px-3"
                 placeholder="Search..."
             />
 
             <Link :href="route(`${routeName}.create`)">
-                <div
-                    class="bg-black text-white px-5 py-1.5 rounded-md cursor-pointer flex items-center gap-2"
-                >
-                    <span class="text-xl">+</span>
-                    <span>Add Role</span>
-                </div>
+                <Button>Create Role</Button>
             </Link>
         </div>
 
@@ -78,8 +74,8 @@ watch(
                         </td>
                         <td class="px-6 py-5 whitespace-nowrap text-end">
                             <div class="flex gap-4 justify-end">
-                                <Link :href="route(`${routeName}.edit`, d.id)">
-                                    <i class="fa-solid fa-pen-to-square"></i>
+                                <Link :href="route(`${routeName}.edit`, d.id)" class="text-[#6e6e6e]">
+                                    <i class="fa-solid fa-pen"></i>
                                 </Link>
 
                                 <button
@@ -88,10 +84,10 @@ watch(
                                             route(`${routeName}.destroy`, d.id)
                                         )
                                     "
-                                    class="text-red-600 hover:text-red-900 underline"
+                                    class="text-red-400 underline"
                                     type="button"
                                 >
-                                    <i class="fa-solid fa-trash"></i>
+                                    <i class="fa-solid fa-trash-can"></i>
                                 </button>
                             </div>
                         </td>
