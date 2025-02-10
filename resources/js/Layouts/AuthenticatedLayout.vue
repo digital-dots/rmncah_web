@@ -60,7 +60,7 @@ const userMenus = ref([
             <!-- main content -->
             <!-- bg-[#f8fbf8] -->
             <!-- fdfcfa -->
-            <main class="py-8 max-w-full flex-1 bg-[#f8f8f8]">
+            <main class="py-10 max-w-full flex-1 bg-[#f8f8f8] overflow-y-auto hidden-scrollbar">
                 <slot />
             </main>
         </div>

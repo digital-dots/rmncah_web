@@ -1,3 +1,4 @@
+import "@fortawesome/fontawesome-free/css/all.min.css";
 import 'vue-multiselect/dist/vue-multiselect.min.css';
 import '../css/app.css';
 import './bootstrap';

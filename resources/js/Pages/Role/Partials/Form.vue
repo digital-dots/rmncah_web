@@ -1,6 +1,6 @@
 <script setup>
 import { useForm } from "@inertiajs/vue3";
-import { ref } from "vue";
+import { onMounted, ref } from "vue";
 import Input from "@/Components/global/Input.vue";
 
 const props = defineProps({
@@ -83,6 +83,21 @@ const submit = () => {
         form.put(route('roles.update', props.editValue.id), options);
     }
 };
+
+onMounted(() => {
+    if (!props.isCreate) {
+        form.name = props.editValue.name;
+        form.permissions = props.editValue.permissions.map((pm) => pm.id);
+
+        const premissionGroupIds = props.editValue.permissions.map(
+            (pm) => pm.permission_group_id
+        );
+
+        selectedGroups.value = props.permissionGroups.filter((gp) =>
+            premissionGroupIds.includes(gp.id)
+        );
+    }
+});
 </script>
 
 <template>

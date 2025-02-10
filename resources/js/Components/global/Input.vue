@@ -26,7 +26,7 @@ defineEmits(['update:modelValue'])
 </script>
 
 <template>
-  <div class="w-full">
+  <div>
     <label v-if="label" class="block mb-3 font-medium text-gray-700">
       {{ label }}
     </label>
@@ -40,7 +40,7 @@ defineEmits(['update:modelValue'])
       :class="{ 'border-red-500': error }"
     >
     
-    <p v-if="error" class="mt-1 text-sm text-red-600">
+    <p v-if="error" class="mt-1.5 text-sm text-red-600">
       {{ error }}
     </p>
   </div>
