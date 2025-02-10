@@ -1,7 +1,6 @@
 <script setup>
 import { useSidebarStore } from "@/stores/sidebar";
 import { router } from "@inertiajs/vue3";
-import { computed } from "vue";
 
 const props = defineProps({
     item: {
@@ -31,7 +30,8 @@ const handleItemClick = (url) => {
                 $page.url.startsWith(`${item.url}`)
         }"
     >
-        <span>
+        <span class="flex items-center gap-3">
+            <i :class="item.icon"></i>
             {{ item.label }}
         </span>
     </li>

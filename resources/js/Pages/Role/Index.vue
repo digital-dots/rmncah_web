@@ -43,7 +43,7 @@ watch(
             <Input
                 v-model="search"
                 type="text"
-                class="w-2/6 px-3"
+                class="w-2/6"
                 placeholder="Search..."
             />
 
