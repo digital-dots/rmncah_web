@@ -5,6 +5,7 @@ use Illuminate\Support\Facades\Route;
 use Illuminate\Foundation\Application;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\Dashboard\RoleController;
+use App\Http\Controllers\Dashboard\UserController;
 
 Route::get('/', function () {
     return redirect()->route('dashboard');
@@ -22,6 +23,7 @@ Route::middleware('auth')->group(function () {
 
 Route::middleware('auth')->group(function () {
     Route::resources([
+        'users' => UserController::class,
         'roles' => RoleController::class,
     ]);
 });

@@ -13,7 +13,12 @@ const userMenus = ref([
         icon: "fa-solid fa-person-circle-exclamation",
         label: "Roles",
         url: "/roles",
-    }
+    },
+    {
+        icon: "fa-solid fa-person-circle-exclamation",
+        label: "Users",
+        url: "/users",
+    },
 ]);
 </script>
 
@@ -51,7 +56,7 @@ const userMenus = ref([
 
         <!-- Main Content -->
         <div class="flex-1 ml-[240px]">
-            <main class="py-10 px-2 min-h-screen bg-[#f8f8f8]">
+            <main class="pt-12 pb-10 px-2 min-h-screen bg-[#f8f8f8]">
                 <slot />
             </main>
         </div>

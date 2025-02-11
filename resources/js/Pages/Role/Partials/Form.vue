@@ -2,7 +2,7 @@
 import { useForm } from "@inertiajs/vue3";
 import { onMounted, ref } from "vue";
 import Input from "@/Components/global/Input.vue";
-import Button from "@/Components/global/Button.vue";
+import Button from "@/Components/global/FormButton.vue";
 
 const props = defineProps({
     isCreate: {

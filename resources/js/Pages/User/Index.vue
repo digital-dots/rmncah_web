@@ -12,7 +12,7 @@ defineOptions({ layout: AuthenticatedLayout });
 
 const props = defineProps(["data", "search"]);
 
-const routeName = ref("roles");
+const routeName = ref("users");
 
 const search = ref(props.search);
 
@@ -29,7 +29,7 @@ watch(
     search,
     debounce((value) => {
         router.get(
-            "/roles",
+            routeName.value,
             { search: value },
             { preserveState: true, replace: true }
         );
@@ -48,7 +48,7 @@ watch(
             />
 
             <Link :href="route(`${routeName}.create`)">
-                <Button>Create Role</Button>
+                <Button>Create User</Button>
             </Link>
         </div>
 
@@ -62,6 +62,12 @@ watch(
                         <th class="px-6 py-4 text-left uppercase text-sm">
                             Name
                         </th>
+                        <th class="px-6 py-4 text-left uppercase text-sm">
+                            Email
+                        </th>
+                        <th class="px-6 py-4 text-left uppercase text-sm">
+                            Role
+                        </th>
                         <th class="px-6 py-4 uppercase text-end text-sm">
                             Actions
                         </th>
@@ -71,6 +77,23 @@ watch(
                     <tr v-for="d in data.data" :key="d.id">
                         <td class="px-6 py-5 whitespace-nowrap text-sm">
                             {{ d.name }}
+                        </td>
+                        <td class="px-6 py-5 whitespace-nowrap text-sm">
+                            {{ d.email }}
+                        </td>
+                        <td class="px-6 py-5 whitespace-nowrap text-sm">
+                            <span v-if="d.roles && d.roles.length" class="space-x-1">
+                                <span 
+                                    v-for="(role, index) in d.roles" 
+                                    :key="role.id"
+                                    class="inline-flex items-center px-2 py-1 rounded-md text-sm font-medium bg-gray-100"
+                                >
+                                    {{ role.name }}
+                                </span>
+                            </span>
+                            <span v-else class="text-gray-400 italic">
+                                No role assigned
+                            </span>
                         </td>
                         <td class="px-6 py-5 whitespace-nowrap text-end">
                             <div class="flex gap-4 justify-end">
