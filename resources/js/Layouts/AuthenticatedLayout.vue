@@ -1,7 +1,7 @@
 <script setup>
 import SidebarItem from "@/Components/sidebar/SidebarItem.vue";
 import { ref } from "vue";
-import { Link } from '@inertiajs/vue3';
+import { Link } from "@inertiajs/vue3";
 
 const userMenus = ref([
     {
@@ -19,13 +19,33 @@ const userMenus = ref([
         label: "Users",
         url: "/users",
     },
+    // {
+    //     icon: "fa-solid fa-layer-group",
+    //     label: "Settings",
+    //     url: "#",
+    //     // permission: ["access_main_title", "access_main_title_text"],
+    //     children: [
+    //         {
+    //             icon: "fa-solid fa-house",
+    //             label: "Roles",
+    //             url: "/roles",
+    //         },
+    //         {
+    //             icon: "fa-solid fa-house-chimney",
+    //             label: "Users",
+    //             url: "/users",
+    //         },
+    //     ],
+    // },
 ]);
 </script>
 
 <template>
     <div class="flex">
         <!-- Fixed Sidebar -->
-        <div class="fixed left-0 top-0 h-screen w-[240px] border-r-[1.5px] border-[#e5e7eb] bg-white">
+        <div
+            class="fixed left-0 top-0 h-screen w-[240px] border-r-[1.5px] border-[#e5e7eb] bg-white"
+        >
             <div class="flex gap-2 items-center p-4">
                 <div>
                     <p class="mb-1.5 font-semibold">WHO</p>
@@ -33,18 +53,22 @@ const userMenus = ref([
             </div>
 
             <div class="flex flex-col justify-between h-[calc(100vh-4rem)]">
-                <ul class="flex flex-col gap-2.5 pt-4 pb-8 px-2">
+                <ul class="flex flex-col gap-2.5 pt-4 pb-8 px-2 overflow-y-auto hidden-scrollbar">
                     <template v-for="menu in userMenus">
                         <SidebarItem :item="menu" />
                     </template>
                 </ul>
-                
+
                 <div class="border-t border-[#e5e7eb]">
                     <ul class="flex flex-col gap-2.5 pt-4 pb-8 px-2">
                         <Link :href="route('logout')" method="post" as="button">
-                            <li class="cursor-pointer hover:bg-black hover:text-white px-4 text-black py-2 rounded-lg text-left">
+                            <li
+                                class="cursor-pointer hover:bg-black hover:text-white px-4 text-black py-2 rounded-lg text-left"
+                            >
                                 <span class="flex items-center gap-3">
-                                    <i class="fa-solid fa-right-from-bracket"></i>
+                                    <i
+                                        class="fa-solid fa-right-from-bracket"
+                                    ></i>
                                     Logout
                                 </span>
                             </li>
