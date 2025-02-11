@@ -1,7 +1,7 @@
 <script setup>
 import SidebarItem from "@/Components/sidebar/SidebarItem.vue";
 import { ref, onMounted } from "vue";
-import { Link } from "@inertiajs/vue3";
+import { Link, router } from "@inertiajs/vue3";
 
 const userMenus = ref([
     {
@@ -54,6 +54,12 @@ onMounted(() => {
         sidebarScroll.value.scrollTop = parseInt(savedPosition);
     }
 });
+
+// Handle logout with cleanup
+const handleLogout = () => {
+    localStorage.removeItem('sidebarScrollPosition');
+    router.post(route('logout'));
+};
 </script>
 
 <template>
@@ -81,19 +87,15 @@ onMounted(() => {
 
                 <div class="border-t border-[#e5e7eb]">
                     <ul class="flex flex-col gap-2.5 pt-4 pb-8 px-2">
-                        <Link 
-                            :href="route('logout')" 
-                            method="post" 
-                            as="button"
-                            @click="localStorage.removeItem('sidebarScrollPosition')"
+                        <li 
+                            @click="handleLogout"
+                            class="cursor-pointer hover:bg-black hover:text-white px-4 text-black py-2 rounded-lg text-left"
                         >
-                            <li class="cursor-pointer hover:bg-black hover:text-white px-4 text-black py-2 rounded-lg text-left">
-                                <span class="flex items-center gap-3">
-                                    <i class="fa-solid fa-right-from-bracket"></i>
-                                    Logout
-                                </span>
-                            </li>
-                        </Link>
+                            <span class="flex items-center gap-3">
+                                <i class="fa-solid fa-right-from-bracket"></i>
+                                Logout
+                            </span>
+                        </li>
                     </ul>
                 </div>
             </div>
